@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ece Seni Çok Seviyorum</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 10px;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            color: black;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+        .text {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="textContainer"></div>
+
+    <script>
+        const container = document.getElementById('textContainer');
+        const phrase = "Ece seni çok seviyorum";
+
+        // Başlangıçta 100 tane ekle
+        function addText(count) {
+            for (let i = 0; i < count; i++) {
+                const span = document.createElement('span');
+                span.className = 'text';
+                span.textContent = phrase;
+                container.appendChild(span);
+            }
+        }
+
+        // İlk yüklemede 100 tane ekle
+        addText(100);
+
+        // Kaydırma olayını dinle
+        window.addEventListener('scroll', () => {
+            // Sayfanın sonuna yaklaşıldığında yeni metin ekle
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                addText(50); // Her seferinde 50 tane daha ekle
+            }
+        });
+    </script>
+</body>
+</html>
